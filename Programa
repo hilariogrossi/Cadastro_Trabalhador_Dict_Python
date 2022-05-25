@@ -1,0 +1,17 @@
+from datetime import datetime
+
+dados_pessoais = dict()
+dados_pessoais['Nome'] = str(input('Nome Completo: '))
+data_nascimento = int(input('Ano de Nascimento: '))
+dados_pessoais['Idade'] = datetime.now().year - data_nascimento
+dados_pessoais['CTPS'] = int(input('Digite o número da Carteira de Trabalho [CTPS] (Digite 0 se não possuir): '))
+
+if dados_pessoais['CTPS'] != 0:
+    dados_pessoais['Ano de Contratação'] = int(input('Digite o Ano de Contratação: '))
+    dados_pessoais['Salário'] = float(input('Digite o Salário Inicial. R$ '))
+    dados_pessoais['Idade de Aposentadoria'] = dados_pessoais['Idade'] + ((dados_pessoais['Ano de Contratação'] + 35) - datetime.now().year)
+
+print('=' * 50)
+for chaves, valores in dados_pessoais.items():
+    print(f'     -  {chaves} tem o valor: {valores}.')
+print('=' * 50)
